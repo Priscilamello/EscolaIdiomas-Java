@@ -1,48 +1,50 @@
 package escolaidiomas;
 
 public class Pessoa {
-  public String nome;
-  public String sobreNome;
-  public String professor;
-  public int rg;
+  protected String firstName;
+  protected String lastName;
+  protected String occupation;
+  protected int registrationNumber;
 
-  public Pessoa(String nome, String sobreNome, String ultimoNome, int rg) {
-    this.nome = nome;
-    this.sobreNome = sobreNome;
+  public Pessoa(String firstName, String lastName, String occupation, int registrationNumber) {
+    this.firstName          = firstName;
+    this.lastName           = lastName;
+    this.occupation         = occupation;
+    this.registrationNumber = registrationNumber;
   }
 
   public Pessoa() {
   }
 
-  public String getNome() {
-    return nome;
+  public String getFirstName() {
+    return firstName;
   }
 
-  public void setNome(String nome) {
-    this.nome = nome;
+  public String getLastName() {
+    return lastName;
   }
 
-  public String getSobreNome() {
-    return sobreNome;
+  public String getOccupation() {
+    return occupation;
   }
 
-  public void setSobreNome(String sobreNome) {
-    this.sobreNome = sobreNome;
+  public int getRegistrationNumber() {
+    return registrationNumber;
   }
 
-  public String getProfessor(String professor) {
-    return professor;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
-  public void setProfessor(String professor) {
-    this.professor = professor;
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
   }
 
-  public int getRg() {
-    return rg;
+  public void setOccupation(String occupation) {
+    this.occupation = occupation;
   }
 
-  public void setRg(int rg) {
-    this.rg = rg;
+  public void setRegistrationNumber(int registrationNumber) {
+    this.registrationNumber = registrationNumber;
   }
 }
