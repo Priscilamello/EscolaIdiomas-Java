@@ -1,38 +1,24 @@
 package escolaidiomas;
 
 public class Aluno extends Pessoa {
-  public int matricula;
-  public String classe;
+  public int registration;
+  public String studentClass;
 
-  public Aluno(int matricula, String classe,
-      String nome, String sobreNome) {
-    this.matricula = matricula;
-    this.classe = classe;
+  public Aluno(String firstName, String lastName, String occupation,
+      int registrationNumber, int registration, String studentClass) {
+    super(firstName, lastName, occupation, registrationNumber);
+    this.registration = registration;
+    this.studentClass = studentClass;
   }
 
   public Aluno() {
   }
 
-  public int getMatricula() {
-    return matricula;
+  public int getRegistration() {
+      return registration;
   }
 
-  public void setMatricula(int matricula) {
-    this.matricula = matricula;
-  }
-
-  public String getClasse() {
-    return classe;
-  }
-
-  public void setClasse(String classe) {
-    this.classe = classe;
-  }
-
-  @Override
-  public String toString() {
-    return super.toString() +
-        "\nNumero de Matricula: " + this.getMatricula() +
-        "\nClasse: " + this.getClasse();
+  public String getStudentClass() {
+      return studentClass;
   }
 }
