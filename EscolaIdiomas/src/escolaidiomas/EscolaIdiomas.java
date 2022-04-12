@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class EscolaIdiomas {
   public static void main(String[] args) {
-    int op = 0, list = 0, teachersList = 0;
-    
+    int op = 0, list = 0, teachersList = 0; // provisory var list / teachesrs list.
+
     /**
      * TODO: implemet students and teachers list;
      */
