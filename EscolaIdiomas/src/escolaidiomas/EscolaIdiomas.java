@@ -5,6 +5,10 @@ import javax.swing.JOptionPane;
 public class EscolaIdiomas {
   public static void main(String[] args) {
     int op = 0, list = 0, teachersList = 0;
+    
+    /**
+     * TODO: implemet students and teachers list;
+     */
     // String[][] scholl = new String[][];
 
     msg("========================================="
