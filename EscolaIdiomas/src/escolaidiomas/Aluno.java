@@ -1,8 +1,8 @@
 package escolaidiomas;
 
 public class Aluno extends Pessoa {
-  public int registration;
-  public String studentClass;
+  private int registration;
+  private String studentClass;
 
   public Aluno(String firstName, String lastName, String occupation,
       int registrationNumber, int registration, String studentClass) {
@@ -20,5 +20,13 @@ public class Aluno extends Pessoa {
 
   public String getStudentClass() {
       return studentClass;
+  }
+
+  public void setRegistration(int registration) {
+      this.registration = registration;
+  }
+
+  public void setStudentClass(String studentClass) {
+      this.studentClass = studentClass;
   }
 }

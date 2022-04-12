@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
 public class EscolaIdiomas {
   public static void main(String[] args) {
     int op = 0, list = 0, teachersList = 0; // provisory var list / teachesrs list.
-
     /**
      * TODO: implemet students and teachers list;
      */
@@ -51,13 +50,38 @@ public class EscolaIdiomas {
           String studentClass;
           studentClass = input("Digite a Classe: ");
           print("Classe: " + studentClass);
+
+          Aluno student = new Aluno(
+              firstName,
+              lastName,
+              "Aluno",
+              Integer.parseInt(socialNumber),
+              Integer.parseInt(registration),
+              studentClass);
+
+          msg("Aluno Cadastrado com sucesso !\n"
+              + "Dados:\n"
+              + student.getFirstName()
+              + " "
+              + student.getLastName()
+              + " "
+              + student.getStudentClass(), false);
+
           list += 1;
           break;
 
         case 2:
           String teachersName;
-          teachersName = input("Digite o Nome Professor:");
-          print("Professor: " + teachersName);
+          teachersName = input("Digite o nome do Professor:");
+          print("Professor nome: " + teachersName);
+
+          String teachersLastName;
+          teachersLastName = input("Digite o sobrenome do Professor:");
+          print("Professor sobrenome: " + teachersLastName);
+
+          String tSocialNumber;
+          tSocialNumber = input("Digite o Rg: ");
+          print("Rg: " + tSocialNumber);
 
           String teaches;
           teaches = input("Digitar a especialidade: ");
@@ -66,20 +90,37 @@ public class EscolaIdiomas {
           String time;
           time = input("Digite o Turno da Aula: ");
           print("Turno: " + time);
+
+          Professor teacher = new Professor(
+              teachersName,
+              teachersLastName,
+              "Professor",
+              Integer.parseInt(tSocialNumber),
+              teaches,
+              time);
+
+          msg("Professor Cadastrado com sucesso !\n"
+              + "Dados:\n"
+              + teacher.getFirstName()
+              + " "
+              + teacher.getLastName()
+              + " "
+              + teacher.getTeaches(), false);
           teachersList += 1;
+
           break;
         case 3:
           if (list == 0)
             break;
           else
             msg("imprimir alunos matriculados", false);
-            continue;
+          continue;
         case 4:
           if (teachersList == 0)
             break;
           else
             msg("imprimir professores matriculados", false);
-            continue;
+          continue;
         case 0:
           int confirm = confirm("Deseja mesmo Sair ?");
           if (confirm > 0)
@@ -113,7 +154,7 @@ public class EscolaIdiomas {
       msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n0 - Sair";
     } else if (students > 0 && teachers == 0) {
       msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Lista de alunos\n0 - Sair";
-    } else if (students == 0 && teachers > 0){
+    } else if (students == 0 && teachers > 0) {
       msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n4 - Lista de professorres\n0 - Sair";
     } else {
       msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Lista de alunos\n4 - Lista de professorres\n0 - Sair";

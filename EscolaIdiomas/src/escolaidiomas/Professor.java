@@ -1,8 +1,8 @@
 package escolaidiomas;
 
 public class Professor extends Pessoa {
-  public String teaches;
-  public String time;
+  private String teaches;
+  private String time;
 
   public Professor(String firstName, String lastName, String occupation,
       int registrationNumber, String teaches, String time) {
