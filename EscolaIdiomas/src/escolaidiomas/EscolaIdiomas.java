@@ -1,14 +1,15 @@
 package escolaidiomas;
 
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class EscolaIdiomas {
   public static void main(String[] args) {
-    int op = 0, list = 0, teachersList = 0; // provisory var list / teachesrs list.
-    /**
-     * TODO: implemet students and teachers list;
-     */
-    // String[][] scholl = new String[][];
+    int op = 0;
+    ArrayList<Aluno> studentsList = new ArrayList<Aluno>();
+    ArrayList<Professor> teachersList = new ArrayList<Professor>();
+    ArrayList<Pessoa> list = new ArrayList<Pessoa>();
 
     msg("========================================="
         + "\n\nBem vindo a escola de Idiomas JDialog"
@@ -19,9 +20,9 @@ public class EscolaIdiomas {
 
     do {
       try {
-        op = Integer.parseInt(input(buildOptions(list, teachersList)));
+        op = Integer.parseInt(input(buildOptions(studentsList, teachersList)));
 
-        if (op > 2 && (list == 0 || teachersList == 0))
+        if (op > 2 && studentsList.size() == 0 && teachersList.size() == 0)
           throw new NumberFormatException("Out of range.");
 
       } catch (NumberFormatException e) {
@@ -67,7 +68,7 @@ public class EscolaIdiomas {
               + " "
               + student.getStudentClass(), false);
 
-          list += 1;
+          studentsList.add(student);
           break;
 
         case 2:
@@ -106,21 +107,40 @@ public class EscolaIdiomas {
               + teacher.getLastName()
               + " "
               + teacher.getTeaches(), false);
-          teachersList += 1;
 
+          teachersList.add(teacher);
           break;
+
         case 3:
-          if (list == 0)
+          if (studentsList.size() == 0) {
             break;
-          else
-            msg("imprimir alunos matriculados", false);
-          continue;
+          } else {
+            Iterator<Aluno> alnIterator = studentsList.iterator();
+            int i = 1;
+            String stds = "";
+            while (alnIterator.hasNext()) {
+              stds += i + " - " + alnIterator.next().toString();
+              i++;
+            }
+            msg(stds, false);
+            break;
+          }
+
         case 4:
-          if (teachersList == 0)
+          if (teachersList.size() == 0)
             break;
-          else
-            msg("imprimir professores matriculados", false);
-          continue;
+          else {
+            Iterator<Professor> teachIterator = teachersList.iterator();
+            int i = 1;
+            String tchrs = "";
+            while (teachIterator.hasNext()) {
+              tchrs += i + " - " + teachIterator.next().toString();
+              i++;
+            }
+            msg(tchrs, false);
+            break;
+          }
+
         case 0:
           int confirm = confirm("Deseja mesmo Sair ?");
           if (confirm > 0)
@@ -148,18 +168,18 @@ public class EscolaIdiomas {
     System.out.println(aMessage);
   }
 
-  private static String buildOptions(int students, int teachers) {
-    String msg = "";
-    if (students == 0 && teachers == 0) {
-      msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n0 - Sair";
-    } else if (students > 0 && teachers == 0) {
-      msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Lista de alunos\n0 - Sair";
-    } else if (students == 0 && teachers > 0) {
-      msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n4 - Lista de professorres\n0 - Sair";
+  private static String buildOptions(ArrayList<Aluno> students, ArrayList<Professor> teachers) {
+    String options = "";
+    if (students.size() == 0 && teachers.size() == 0) {
+      options = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n0 - Sair";
+    } else if (students.size() > 0 && teachers.size() == 0) {
+      options = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Lista de alunos\n0 - Sair";
+    } else if (students.size() == 0 && teachers.size() > 0) {
+      options = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n4 - Lista de professorres\n0 - Sair";
     } else {
-      msg = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Lista de alunos\n4 - Lista de professorres\n0 - Sair";
+      options = "Digite o número da operação:\n1 - Cadastrar Aluno\n2 - Cadastrar Professor\n3 - Lista de alunos\n4 - Lista de professorres\n0 - Sair";
     }
 
-    return msg;
+    return options;
   }
 }

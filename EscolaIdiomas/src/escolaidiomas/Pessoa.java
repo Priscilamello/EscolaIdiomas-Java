@@ -47,4 +47,11 @@ public class Pessoa {
   public void setRegistrationNumber(int registrationNumber) {
     this.registrationNumber = registrationNumber;
   }
+
+  @Override
+  public String toString() {
+    return this.getFirstName()
+    + " "
+    + this.getLastName();
+  }
 }

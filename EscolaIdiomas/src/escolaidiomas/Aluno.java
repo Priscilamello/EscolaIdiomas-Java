@@ -29,4 +29,11 @@ public class Aluno extends Pessoa {
   public void setStudentClass(String studentClass) {
       this.studentClass = studentClass;
   }
+
+  @Override
+  public String toString() {
+      return super.toString()
+        + " | Matricula: " + this.getRegistration()
+        + "\n";
+  }
 }
